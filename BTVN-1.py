@@ -14,6 +14,8 @@
 #         print(nhapso, "3-khong phai la so nguyen to!")
 #     break
 
+# Em lười xóa phần trên quá... thôi giữ làm kỷ niệm anh nhé :3
+
 huy = int(input("Nhap 1 so bat ky: "))  
   
 if huy > 1:  
