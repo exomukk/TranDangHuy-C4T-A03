@@ -1,67 +1,34 @@
-def merge(left, right):
-    pass
-    if len(left) == 0:
-        return right
-    elif len(right) == 0:
-        return left
-    
-   
-    left = right = 0
-    list_merged = []  
-    list_len_target = len(left) + len(right)
-    while len(list_merged) < list_len_target:
-        if left[index_left] <= right[index_right]:
-            list_merged.append(left[index_left])
-            index_left += 1
-        else:
-            list_merged.append(right[index_right])
-            index_right += 1
-
-        if index_right == len(right):
-            
-            list_merged += left[index_left:]
-            break
-        elif index_left == len(left):
-            
-            list_merged += right[index_right:]
-            break
-        
-    return list_merged
-
-def mergeSort(nums):
-    if len(nums) <= 1:
-        return nums
+def merge(left_list, right_list):
 
 
-    mid = len(nums) // 2
-    left = nums[:mid]
-    right = nums[mid:]
+sorted_list = []
+left_list_index = 0
+right_list_index = 0
 
-    left_list = mergeSort(left)
-    right_list = mergeSort(right)
+left_list_length, right_list_length = len(left_list), len(right_list)
 
-    return merge(left_list, right_list)
+for _ in range(left_list_length + right_list_length):
+    if left_list_index < left_list_length and right_list_index < right_list_length:
+        # We check which value from the start of each list is smaller
+        # If the item at the beginning of the left list is smaller, add it to the sorted list
+    if left_list[left_list_index] <= right_list[right_list_index]:
+sorted_list.append(left_list[left_list_index])
+left_list_index += 1
+# If the item at the beginning of the right list is smaller, add it
+# to the sorted list
+else:
+sorted_list.append(right_list[right_list_index])
+right_list_index += 1
 
-    # while i < len(left) and j < len(right):
-    #     if left[i] < right[j]:
-    #         nums[k] = left[i]
-    #         i += 1
-    #     else:
-    #         nums[k] = right[j]
-    #         j += 1
+# If we've reached the end of the of the left list, add the elements
+# from the right list
+elif left_list_index == left_list_length:
+sorted_list.append(right_list[right_list_index])
+right_list_index += 1
+# If we've reached the end of the of the right list, add the elements
+# from the left list
+elif right_list_index == right_list_length:
+sorted_list.append(left_list[left_list_index])
+left_list_index += 1
 
-    #     k += 1
-
-    # while i < len(left):
-    #     nums[k] = left[i]
-    #     i += 1
-    #     k += 1
-
-    # while j < len(right):
-    #     nums[k] = right[j]
-    #     j += 1
-    #     k += 1
-
-nums = [1,5,8,9,2,4,10]
-mergeSort(nums)
-print(nums)
+return sorted_list
